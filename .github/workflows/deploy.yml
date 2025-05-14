@@ -1,4 +1,4 @@
-name: Deploy Angular via SFTP (pure)
+name: Deploy Angular via SFTP (FTP-Deploy-Action)
 
 on:
   push:
@@ -24,13 +24,13 @@ jobs:
     - name: 🏗️ Build Angular
       run: npm run build -- --configuration production
 
-    - name: 🚀 Upload via FTP Deploy Action (SFTP)
+    - name: 🚀 Upload via SFTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
+        protocol: sftp
         server: ${{ secrets.SFTP_HOST }}
         username: ${{ secrets.SFTP_USER }}
         password: ${{ secrets.SFTP_PASS }}
         port: ${{ secrets.SFTP_PORT }}
-        protocol: "sftp"
         local-dir: dist/illya-portfolio/browser/
         server-dir: ${{ secrets.SFTP_TARGET }}
