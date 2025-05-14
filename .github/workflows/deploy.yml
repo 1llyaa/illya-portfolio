@@ -24,6 +24,14 @@ jobs:
     - name: 🏗️ Build Angular
       run: npm run build -- --configuration production
 
+   
+    - name: 🧪 Debug secrets presence
+      run: |
+        echo "SFTP_HOST is set: ${SFTP_HOST:+yes}"
+      env:
+        SFTP_HOST: ${{ secrets.SFTP_HOST }}
+
+    
     - name: 🚀 Upload via SFTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
