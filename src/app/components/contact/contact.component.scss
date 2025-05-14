@@ -1,0 +1,221 @@
+.contact {
+  padding: 4rem 2rem;
+  background-color: var(--bg-secondary);
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--accent-primary);
+    position: relative;
+    display: inline-block;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(to right, var(--accent-primary), var(--accent-light));
+      border-radius: 2px;
+    }
+  }
+
+  p {
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+    max-width: 600px;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    width: 100%;
+    max-width: 500px;
+
+    .form-group {
+      position: relative;
+      width: 100%;
+    }
+
+    input,
+    textarea {
+      width: 80%;
+      padding: 1rem;
+      background: var(--bg-primary);
+      border: 2px solid rgba(156, 39, 176, 0.1);
+      border-radius: 8px;
+      color: var(--text-primary);
+      font-size: 1rem;
+      transition: all 0.3s ease;
+
+      &::placeholder {
+        color: var(--text-secondary);
+      }
+
+      &:focus {
+        outline: none;
+        border-color: var(--accent-primary);
+        box-shadow: 0 0 0 3px rgba(156, 39, 176, 0.1);
+      }
+
+      &.invalid {
+        border-color: #f44336;
+      }
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .error-message {
+      position: absolute;
+      bottom: -20px;
+      left: 0;
+      color: #f44336;
+      font-size: 0.85rem;
+      width: 100%;
+      text-align: left;
+    }
+
+    button {
+      background: var(--accent-primary);
+      color: var(--text-primary);
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+
+      i {
+        font-size: 1.1rem;
+      }
+
+      &:hover:not(:disabled) {
+        background: transparent;
+        border-color: var(--accent-primary);
+        transform: translateY(-2px);
+      }
+
+      &:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  .socials {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 3rem;
+    width: 100%;
+
+    a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: all 0.3s ease;
+
+      i {
+        font-size: 1.5rem;
+        padding: 1rem;
+        background: var(--bg-primary);
+        border-radius: 50%;
+        transition: all 0.3s ease;
+      }
+
+      span {
+        font-size: 0.9rem;
+      }
+
+      &:hover {
+        color: var(--accent-light);
+        transform: translateY(-3px);
+
+        i {
+          background: rgba(156, 39, 176, 0.1);
+        }
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    padding: 3rem 1rem;
+
+    .container {
+      padding: 0;
+    }
+
+    .contact-form {
+      .form-group {
+        margin-bottom: 1rem;
+      }
+
+      .error-message {
+        text-align: center;
+        bottom: -18px;
+      }
+    }
+
+    .socials {
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+    }
+  }
+}
+
+.status-message {
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 4px;
+  text-align: center;
+  
+  &.success {
+    background-color: rgba(72, 187, 120, 0.1);
+    color: #48bb78;
+    border: 1px solid #48bb78;
+  }
+  
+  &.error {
+    background-color: rgba(245, 101, 101, 0.1);
+    color: #f56565;
+    border: 1px solid #f56565;
+  }
+}
+
+button[type="submit"] {
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+}

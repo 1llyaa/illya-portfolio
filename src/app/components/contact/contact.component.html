@@ -1,0 +1,107 @@
+<section id="contact" class="contact">
+  <div class="container">
+    <h2>Contact Me</h2>
+    <p>Let's collaborate on your next project! Feel free to reach out through the form or social media.</p>
+
+    <form [formGroup]="contactForm" (ngSubmit)="protectedAction()" class="contact-form">
+      <div class="form-group">
+        <input 
+          type="text" 
+          formControlName="name" 
+          placeholder="Your Name" 
+          [class.invalid]="hasError('name', 'required') || hasError('name', 'minlength')"
+        />
+        <span class="error-message" *ngIf="hasError('name', 'required')">
+          Please enter your name
+        </span>
+        <span class="error-message" *ngIf="hasError('name', 'minlength')">
+          Name must be at least 2 characters long
+        </span>
+      </div>
+
+      <div class="form-group">
+        <input 
+          type="email" 
+          formControlName="email" 
+          placeholder="Your Email" 
+          [class.invalid]="hasError('email', 'required') || hasError('email', 'email')"
+        />
+        <span class="error-message" *ngIf="hasError('email', 'required')">
+          Please enter your email address
+        </span>
+        <span class="error-message" *ngIf="hasError('email', 'email')">
+          Please enter a valid email address
+        </span>
+      </div>
+
+      <div class="form-group">
+        <input 
+          type="tel" 
+          formControlName="phone" 
+          placeholder="Your Phone Number" 
+          [class.invalid]="hasError('phone', 'required') || hasError('phone', 'pattern')"
+        />
+        <span class="error-message" *ngIf="hasError('phone', 'required')">
+          Please enter your phone number
+        </span>
+        <span class="error-message" *ngIf="hasError('phone', 'pattern')">
+          Please enter a valid phone number (e.g., +1234567890 or 123-456-7890)
+        </span>
+      </div>
+
+      <div class="form-group">
+        <input 
+          type="text" 
+          formControlName="subject" 
+          placeholder="Subject" 
+          [class.invalid]="hasError('subject', 'required') || hasError('subject', 'minlength')"
+        />
+        <span class="error-message" *ngIf="hasError('subject', 'required')">
+          Please enter a subject
+        </span>
+        <span class="error-message" *ngIf="hasError('subject', 'minlength')">
+          Subject must be at least 3 characters long
+        </span>
+      </div>
+
+      <div class="form-group">
+        <textarea 
+          formControlName="message" 
+          placeholder="Your Message"
+          rows="5"
+          [class.invalid]="hasError('message', 'required') || hasError('message', 'minlength')"
+        ></textarea>
+        <span class="error-message" *ngIf="hasError('message', 'required')">
+          Please enter your message
+        </span>
+        <span class="error-message" *ngIf="hasError('message', 'minlength')">
+          Message must be at least 10 characters long
+        </span>
+      </div>
+
+      <div class="status-message" *ngIf="submitStatus" [class.success]="submitStatus.success" [class.error]="!submitStatus.success">
+        {{ submitStatus.message }}
+      </div>
+
+      <button type="submit" [disabled]="isSubmitting">
+        <i class="fas fa-paper-plane"></i>
+        {{ isSubmitting ? 'Sending...' : 'Send Message' }}
+      </button>
+    </form>
+
+    <div class="socials">
+      <a href="https://github.com/1llyaa" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+        <i class="fab fa-github"></i>
+        <span>GitHub</span>
+      </a>
+      <a href="https://www.linkedin.com/in/illya-miloserdov-b8050a253/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
+        <i class="fab fa-linkedin"></i>
+        <span>LinkedIn</span>
+      </a>
+      <a href="mailto:illyamiloserdov@skaut.cz" aria-label="Email Me">
+        <i class="fas fa-envelope"></i>
+        <span>Email</span>
+      </a>
+    </div>
+  </div>
+</section>

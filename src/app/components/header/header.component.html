@@ -1,0 +1,38 @@
+<header class="header" [class.hide]="!isHeaderVisible">
+  <div class="container">
+    <a href="#" class="logo">
+      <img src="assets/images/logo.webp" alt="Miloserdov Logo" class="logo-img">
+    </a>
+    
+    <nav [class.active]="isMenuOpen">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <div class="theme-toggle">
+        <input 
+          type="checkbox" 
+          id="theme-switch" 
+          [checked]="isDarkTheme"
+          (change)="toggleTheme()"
+        >
+        <label for="theme-switch" class="switch">
+          <svg class="switch-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <!-- Moon Icon -->
+            <path class="moon" d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+            <!-- Sun Icon -->
+            <g class="sun">
+              <circle cx="12" cy="12" r="4" fill="currentColor"/>
+              <path d="M12 2v2m0 16v2M4 12H2m20 0h-2m-2.828-6.828L15.757 6.586M8.243 17.414 6.828 18.828M6.828 5.172 8.243 6.586m8.929 10.828 1.414 1.414M12 19a7 7 0 1 1 0-14 7 7 0 0 1 0 14z" stroke="currentColor" stroke-linecap="round" stroke-width="2"/>
+            </g>
+          </svg>
+        </label>
+      </div>
+    </nav>
+
+    <button class="burger" [class.open]="isMenuOpen" (click)="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>

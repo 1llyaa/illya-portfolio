@@ -1,1 +1,63 @@
-/* You can add global styles to this file, and also import other style files */
+// Custom properties for theme colors
+:root {
+  --bg-primary: #121212;
+  --bg-primary-rgb: 18, 18, 18;
+  --bg-secondary: #1e1e1e;
+  --bg-secondary-rgb: 30, 30, 30;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --accent-primary: #9c27b0;
+  --accent-secondary: #7b1fa2;
+  --accent-light: #ce93d8;
+}
+
+// Global styles
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+// Scrollbar styling
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-primary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-secondary);
+}
+
+// Global link styles
+a {
+  color: var(--accent-light);
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: var(--accent-primary);
+  }
+}
+
+// Selection color
+::selection {
+  background: var(--accent-primary);
+  color: var(--text-primary);
+}
+
+// Smooth scrolling
+html {
+  scroll-behavior: smooth;
+}
