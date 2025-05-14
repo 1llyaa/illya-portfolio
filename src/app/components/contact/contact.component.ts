@@ -42,7 +42,7 @@ export class ContactComponent implements OnInit {
       grecaptcha
         .execute(environment.recaptcha.siteKey, { action: "sendMessage" })
         .then((token: string) => {
-          this.http.post('http://miloserdov.cz/api/verify-recaptcha.php', {
+          this.http.post('https://miloserdov.cz/api/verify-recaptcha.php', {
             token: token
           }).subscribe((response: any) => {
             console.log(response);
