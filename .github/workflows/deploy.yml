@@ -26,10 +26,10 @@ jobs:
 
    
     - name: 🧪 Debug secrets presence
-      run: |
-        echo "SFTP_HOST is set: ${SFTP_HOST:+yes}"
+      run: echo "SFTP_HOST is set:$SFTP_HOST"
       env:
-        SFTP_HOST: ${{ secrets.SFTP_HOST }}
+         SFTP_HOST: ${{ secrets.SFTP_HOST }}
+
 
     
     - name: 🚀 Upload via SFTP
