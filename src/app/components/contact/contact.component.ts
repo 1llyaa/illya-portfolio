@@ -37,18 +37,20 @@ export class ContactComponent implements OnInit {
     emailjs.init(environment.emailjs.publicKey);
   }
   
-  protectedAction() {
-    grecaptcha.ready(() => {
-      grecaptcha
-        .execute(environment.recaptcha.siteKey, { action: "sendMessage" })
-        .then((token: string) => {
-          this.http.post('https://miloserdov.cz/api/verify-recaptcha.php', {
-            token: token
-          }).subscribe((response: any) => {
-            console.log(response);
-          });
-        })
-    });
+  async protectedAction() {
+      const token = await (window as any).grecaptcha.execute(environment.recaptcha.siteKey, { action: 'submit' });
+    
+      this.http.post<{ success: boolean, score?: number }>(
+        'https://miloserdov.cz/api/verify-recaptcha.php',
+        { token }
+      ).subscribe(res => {
+        if (res.success) {
+          console.log('reCAPTCHA passed with score:', res.score);
+          // Proceed to send form/email etc.
+        } else {
+          console.warn('reCAPTCHA failed. Score:', res.score);
+        }
+      });
   }
 
   async onSubmit() {
