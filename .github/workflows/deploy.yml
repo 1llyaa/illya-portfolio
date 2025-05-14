@@ -1,4 +1,4 @@
-name: Deploy Angular via SFTP
+name: Deploy Angular via FTP
 
 on:
   push:
@@ -25,12 +25,13 @@ jobs:
     - name: 🏗️ Build Angular
       run: npm run build -- --configuration production
 
-    - name: 🚀 Deploy via SFTP (Kuchenna)
-      uses: kuchenna/ftp-action@v1.0.0
+    - name: 🚀 Deploy via FTP
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-        host: ${{ secrets.SFTP_HOST }}
-        username: ${{ secrets.SFTP_USER }}
-        password: ${{ secrets.SFTP_PASS }}
-        protocol: sftp
-        localDir: dist/illya-portfolio/browser/
-        remoteDir: ${{ secrets.SFTP_TARGET }}
+        protocol: ftp
+        server: ${{ secrets.FTP_HOST }}
+        username: ${{ secrets.FTP_USER }}
+        password: ${{ secrets.FTP_PASS }}
+        port: ${{ secrets.FTP_PORT }}
+        local-dir: dist/illya-portfolio/browser/
+        server-dir: ${{ secrets.FTP_TARGET }}
