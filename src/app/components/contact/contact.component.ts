@@ -5,8 +5,6 @@ import emailjs from '@emailjs/browser';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 
-declare var grecaptcha: any;
-
 @Component({
   selector: 'app-contact',
   standalone: true,
@@ -28,29 +26,10 @@ export class ContactComponent implements OnInit {
       subject: ['', [Validators.required, Validators.minLength(3)]],
       message: ['', [Validators.required, Validators.minLength(10)]]
     });
-  
   }
 
   ngOnInit() {
-    
-    console.log('Initializing EmailJS with public key:', environment.emailjs.publicKey);
     emailjs.init(environment.emailjs.publicKey);
-  }
-  
-  async protectedAction() {
-      const token = await (window as any).grecaptcha.execute(environment.recaptcha.siteKey, { action: 'submit' });
-    
-      this.http.post<{ success: boolean, score?: number }>(
-        'https://miloserdov.cz/api/verify-recaptcha.php',
-        { token }
-      ).subscribe(res => {
-        if (res.success) {
-          console.log('reCAPTCHA passed with score:', res.score);
-          // Proceed to send form/email etc.
-        } else {
-          console.warn('reCAPTCHA failed. Score:', res.score);
-        }
-      });
   }
 
   async onSubmit() {
@@ -59,7 +38,6 @@ export class ContactComponent implements OnInit {
       this.submitStatus = null;
 
       try {
-        console.log('Attempting to send email...');
         const response = await emailjs.send(
           environment.emailjs.serviceId,
           environment.emailjs.templateId,
@@ -80,8 +58,6 @@ export class ContactComponent implements OnInit {
             })
           }
         );
-        
-        console.log('Email sent successfully:', response);
 
         this.submitStatus = {
           success: true,
@@ -89,7 +65,6 @@ export class ContactComponent implements OnInit {
         };
         this.contactForm.reset();
       } catch (error) {
-        console.error('Error sending email:', error);
         this.submitStatus = {
           success: false,
           message: 'Sorry, there was an error sending your message. Please try again.'
@@ -98,13 +73,6 @@ export class ContactComponent implements OnInit {
         this.isSubmitting = false;
       }
     } else {
-      console.log('Form validation failed:', {
-        formValid: this.contactForm.valid,
-        formErrors: this.contactForm.errors,
-        formValue: this.contactForm.value,
-        formTouched: this.contactForm.touched,
-        formDirty: this.contactForm.dirty
-      });
       this.markFormGroupTouched(this.contactForm);
     }
   }

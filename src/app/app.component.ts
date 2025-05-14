@@ -24,19 +24,9 @@ import { HttpClientModule } from '@angular/common/http';
   styleUrl: './app.component.scss'
 })
 
-
 export class AppComponent implements OnInit {
   title = 'illya-portfolio';
 
   ngOnInit() {
-    this.loadRecaptchaScript();
   }
-
-  loadRecaptchaScript() {
-    const script = document.createElement("script");
-    script.src = `https://www.google.com/recaptcha/api.js?render=${environment.recaptcha.siteKey}`;
-    document.head.appendChild(script);
-  }
-  
-  
 }

@@ -3,7 +3,7 @@
     <h2>Contact Me</h2>
     <p>Let's collaborate on your next project! Feel free to reach out through the form or social media.</p>
 
-    <form [formGroup]="contactForm" (ngSubmit)="protectedAction()" class="contact-form">
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
       <div class="form-group">
         <input 
           type="text" 
