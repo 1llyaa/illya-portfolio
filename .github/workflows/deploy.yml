@@ -1,4 +1,4 @@
-name: Deploy Angular via SFTP
+name: Deploy Angular via SFTP with git-ftp
 
 on:
   push:
@@ -26,12 +26,9 @@ jobs:
       run: npm run build -- --configuration production
 
     - name: 🚀 Deploy via SFTP
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      uses: sebastianpopp/git-ftp-action@v1.5.0
       with:
-        protocol: sftp
-        server: ${{ secrets.SFTP_HOST }}
-        username: ${{ secrets.SFTP_USER }}
+        url: sftp://${{ secrets.SFTP_HOST }}${{ secrets.SFTP_TARGET }}
+        user: ${{ secrets.SFTP_USER }}
         password: ${{ secrets.SFTP_PASS }}
-        port: ${{ secrets.SFTP_PORT }}
-        local-dir: dist/illya-portfolio/browser/
-        server-dir: ${{ secrets.SFTP_TARGET }}
+        local-dir: dist/illya-portfolio/browser
