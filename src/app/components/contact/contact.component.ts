@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import emailjs from '@emailjs/browser';
 import { environment } from '../../../environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 declare var grecaptcha: any;
 
@@ -10,6 +11,7 @@ declare var grecaptcha: any;
   selector: 'app-contact',
   standalone: true,
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  providers: [HttpClient],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'
 })
@@ -18,7 +20,7 @@ export class ContactComponent implements OnInit {
   isSubmitting = false;
   submitStatus: { success: boolean; message: string } | null = null;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private http: HttpClient) {
     this.contactForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
@@ -26,6 +28,7 @@ export class ContactComponent implements OnInit {
       subject: ['', [Validators.required, Validators.minLength(3)]],
       message: ['', [Validators.required, Validators.minLength(10)]]
     });
+  
   }
 
   ngOnInit() {
@@ -39,7 +42,16 @@ export class ContactComponent implements OnInit {
       grecaptcha
         .execute(environment.recaptcha.siteKey, { action: "sendMessage" })
         .then((token: string) => {
-          console.log('Token:', token);
+          this.http.post('http://miloserdov.cz/api/verify-recaptcha.php', {
+            token: token
+          }).subscribe((response: any) => {
+            if (response.success) {
+              console.log('Token is valid' + response.score);
+              this.onSubmit();
+            } else {
+              console.log('Token is invalid' + response.score);
+            }
+          });
         })
     });
   }

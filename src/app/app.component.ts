@@ -6,6 +6,7 @@ import { AboutComponent } from './components/about/about.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { environment } from '../environments/environment';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,8 @@ import { environment } from '../environments/environment';
     HeroComponent,
     AboutComponent,
     ProjectsComponent,
-    ContactComponent
+    ContactComponent,
+    HttpClientModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
