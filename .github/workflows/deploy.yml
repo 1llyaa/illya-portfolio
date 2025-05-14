@@ -24,12 +24,15 @@ jobs:
     - name: 🏗️ Build Angular
       run: npm run build -- --configuration production
 
-    - name: 🚀 Upload built files via SFTP
+    - name: 🚀 Upload via SCP (SSH)
       uses: appleboy/scp-action@v0.1.4
       with:
         host: ${{ secrets.SFTP_HOST }}
         username: ${{ secrets.SFTP_USER }}
-        password: ${{ secrets.SFTP_PASS }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.SFTP_PORT }}
         source: "dist/illya-portfolio/browser/*"
         target: ${{ secrets.SFTP_TARGET }}
+        overwrite: true
+        strip_components: 0
+
