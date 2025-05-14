@@ -1,4 +1,4 @@
-name: Build and Deploy Angular 19 via SFTP
+name: Deploy Angular via SFTP (pure)
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,15 +24,13 @@ jobs:
     - name: 🏗️ Build Angular
       run: npm run build -- --configuration production
 
-    - name: 🚀 Upload via SCP (SSH)
-      uses: appleboy/scp-action@v0.1.4
+    - name: 🚀 Upload via FTP Deploy Action (SFTP)
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-        host: ${{ secrets.SFTP_HOST }}
+        server: ${{ secrets.SFTP_HOST }}
         username: ${{ secrets.SFTP_USER }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        password: ${{ secrets.SFTP_PASS }}
         port: ${{ secrets.SFTP_PORT }}
-        source: "dist/illya-portfolio/browser/*"
-        target: ${{ secrets.SFTP_TARGET }}
-        overwrite: true
-        strip_components: 0
-
+        protocol: "sftp"
+        local-dir: dist/illya-portfolio/browser/
+        server-dir: ${{ secrets.SFTP_TARGET }}
