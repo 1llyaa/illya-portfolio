@@ -1,4 +1,4 @@
-name: Deploy Angular via SFTP (FTP-Deploy-Action)
+name: Deploy Angular via SFTP
 
 on:
   push:
@@ -8,6 +8,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: webhosting-secrets
 
     steps:
     - name: 📥 Checkout code
@@ -24,19 +25,11 @@ jobs:
     - name: 🏗️ Build Angular
       run: npm run build -- --configuration production
 
-   
-    - name: 🧪 Debug secrets presence
-      run: echo "SFTP_HOST is set:$SFTP_HOST"
-      env:
-         SFTP_HOST: ${{ secrets.SFTP_HOST }}
-
-
-    
-    - name: 🚀 Upload via SFTP
+    - name: 🚀 Deploy via SFTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
         protocol: sftp
-        server: www226.your-server.de
+        server: ${{ secrets.SFTP_HOST }}
         username: ${{ secrets.SFTP_USER }}
         password: ${{ secrets.SFTP_PASS }}
         port: ${{ secrets.SFTP_PORT }}
