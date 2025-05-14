@@ -45,12 +45,7 @@ export class ContactComponent implements OnInit {
           this.http.post('http://miloserdov.cz/api/verify-recaptcha.php', {
             token: token
           }).subscribe((response: any) => {
-            if (response.success) {
-              console.log('Token is valid' + response.score);
-              this.onSubmit();
-            } else {
-              console.log('Token is invalid' + response.score);
-            }
+            console.log(response);
           });
         })
     });
