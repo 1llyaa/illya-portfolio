@@ -1,0 +1,36 @@
+name: Build and Deploy Angular 19 via SFTP
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 📥 Checkout code
+      uses: actions/checkout@v3
+
+    - name: 🔧 Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: 📦 Install dependencies
+      run: npm ci
+
+    - name: 🏗️ Build Angular
+      run: npm run build -- --configuration production
+
+    - name: 🚀 Upload to SFTP
+      uses: pressidium/lftp-deploy@v1.1.0
+      with:
+        host: ${{ secrets.SFTP_HOST }}
+        port: ${{ secrets.SFTP_PORT }}
+        username: ${{ secrets.SFTP_USER }}
+        password: ${{ secrets.SFTP_PASS }}
+        localDir: dist/illya-portfolio/browser
+        remoteDir: ${{ secrets.SFTP_TARGET }}
+        sftp: true
