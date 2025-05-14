@@ -24,13 +24,12 @@ jobs:
     - name: 🏗️ Build Angular
       run: npm run build -- --configuration production
 
-    - name: 🚀 Upload to SFTP
-      uses: pressidium/lftp-deploy@v1.1.0
+    - name: 🚀 Upload built files via SFTP
+      uses: appleboy/scp-action@v0.1.4
       with:
         host: ${{ secrets.SFTP_HOST }}
-        port: ${{ secrets.SFTP_PORT }}
         username: ${{ secrets.SFTP_USER }}
         password: ${{ secrets.SFTP_PASS }}
-        localDir: dist/illya-portfolio/browser
-        remoteDir: ${{ secrets.SFTP_TARGET }}
-        sftp: true
+        port: ${{ secrets.SFTP_PORT }}
+        source: "dist/illya-portfolio/browser/*"
+        target: ${{ secrets.SFTP_TARGET }}
