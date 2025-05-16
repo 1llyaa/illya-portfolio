@@ -1,4 +1,4 @@
-name: Deploy to Dev Subdomain
+name: Deploy Angular Dev to dev.miloserdov.cz
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - dev
 
 jobs:
-  deploy-dev:
+  deploy:
     runs-on: ubuntu-latest
     environment: webhosting-secrets
 
@@ -25,11 +25,13 @@ jobs:
     - name: 🏗️ Build Angular (Dev)
       run: npm run build -- --configuration=dev
 
-    - name: 🚀 Deploy Dev via git-ftp
-      uses: sebastianpopp/git-ftp-action@releases/v1
+    - name: 🚀 Deploy to /public_html/dev/ (FTPS)
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-        url: ftps://${{ secrets.FTP_HOST }}/public_html/dev/
-        user: ${{ secrets.FTP_USER }}
+        protocol: ftps
+        server: ${{ secrets.FTP_HOST }}
+        username: ${{ secrets.FTP_USER }}
         password: ${{ secrets.FTP_PASS }}
+        port: ${{ secrets.FTP_PORT }}
         local-dir: dist/dev-portfolio/browser/
-
+        server-dir: /public_html/dev/
