@@ -25,7 +25,7 @@ jobs:
     - name: 🏗️ Build Angular (Dev)
       run: npm run build -- --configuration=dev
 
-    - name: 🚀 Deploy to /public_html/dev/ (FTPS)
+    - name: 🚀 Deploy to /public_html/dev/
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
         protocol: ftps
@@ -33,5 +33,5 @@ jobs:
         username: ${{ secrets.FTP_USER }}
         password: ${{ secrets.FTP_PASS }}
         port: ${{ secrets.FTP_PORT }}
-        local-dir: dist/dev-portfolio/browser/
-        server-dir: /public_html/dev/
+        local-dir: dist/dev-portfolio/browser/     # ✅ THIS is key
+        server-dir: /public_html/dev/               # ✅ Push directly inside
