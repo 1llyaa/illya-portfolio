@@ -30,6 +30,10 @@ export class ThemeService {
     this.setTheme(!this.isDarkTheme.value);
   }
 
+  isDark(): boolean {
+    return this.isDarkTheme.value;
+  }
+
   private updateThemeVariables(isDark: boolean) {
     const root = document.documentElement;
     if (isDark) {
