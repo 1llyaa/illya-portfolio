@@ -1,0 +1,37 @@
+name: Deploy to Dev Subdomain
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  deploy-dev:
+    runs-on: ubuntu-latest
+    environment: webhosting-secrets
+
+    steps:
+    - name: 📥 Checkout code
+      uses: actions/checkout@v3
+
+    - name: 🔧 Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: 📦 Install dependencies
+      run: npm ci
+
+    - name: 🏗️ Build Angular (Dev)
+      run: npm run build -- --configuration=dev
+
+    - name: 🚀 Deploy to /public_html/dev/
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        protocol: ftps
+        server: ${{ secrets.FTP_HOST }}
+        username: ${{ secrets.FTP_USER }}
+        password: ${{ secrets.FTP_PASS }}
+        port: ${{ secrets.FTP_PORT }}
+        local-dir: dist/dev-portfolio/
+        server-dir: /public_html/dev/
