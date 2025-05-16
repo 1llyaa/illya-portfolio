@@ -1,4 +1,4 @@
-name: Deploy to Dev Subdomain
+name: Deploy Angular Dev to dev.miloserdov.cz
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - dev
 
 jobs:
-  deploy-dev:
+  deploy:
     runs-on: ubuntu-latest
     environment: webhosting-secrets
 
@@ -33,5 +33,5 @@ jobs:
         username: ${{ secrets.FTP_USER }}
         password: ${{ secrets.FTP_PASS }}
         port: ${{ secrets.FTP_PORT }}
-        local-dir: dist/dev-portfolio/
-        server-dir: /public_html/dev/
+        local-dir: dist/dev-portfolio/browser/     # ✅ THIS is key
+        server-dir: /public_html/dev/               # ✅ Push directly inside
