@@ -61,10 +61,11 @@
             "dev": {
               "outputPath": "dist/dev-portfolio",
               "baseHref": "/",
-              "optimization": false,
-              "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": false,        
+              "outputHashing": "all",          
+              "optimization": true        
             }
+
           },
           "defaultConfiguration": "production"
         },
