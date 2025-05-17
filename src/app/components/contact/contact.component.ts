@@ -3,13 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import emailjs from '@emailjs/browser';
 import { environment } from '../../../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
-  providers: [HttpClient],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'
 })

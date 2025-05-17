@@ -184,6 +184,15 @@
         transition: width 0.3s ease;
       }
 
+      &.active {
+        color: var(--accent-primary);
+        font-weight: 500;
+        
+        &::after {
+          width: 100%;
+        }
+      }
+
       &:hover {
         color: var(--accent-light);
         

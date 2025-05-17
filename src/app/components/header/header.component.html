@@ -1,13 +1,14 @@
 <header class="header" [class.hide]="!isHeaderVisible">
   <div class="container">
-    <a href="#" class="logo">
+    <a routerLink="/" class="logo">
       <!-- <img src="assets/images/logo.webp" alt="Miloserdov Logo" class="logo-img"> -->
     </a>
     
     <nav [class.active]="isMenuOpen">
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+      <a routerLink="/about-me" routerLinkActive="active">About Me</a>
+      <a routerLink="/projects" routerLinkActive="active">Projects</a>
+      <a routerLink="/contact" routerLinkActive="active">Contact</a>
       <div class="theme-toggle">
         <input 
           type="checkbox" 
