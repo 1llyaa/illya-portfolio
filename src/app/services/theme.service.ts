@@ -37,23 +37,23 @@ export class ThemeService {
   private updateThemeVariables(isDark: boolean) {
     const root = document.documentElement;
     if (isDark) {
-      root.style.setProperty('--bg-primary', '#121212');
-      root.style.setProperty('--bg-primary-rgb', '18, 18, 18');
-      root.style.setProperty('--bg-secondary', '#1e1e1e');
-      root.style.setProperty('--bg-secondary-rgb', '30, 30, 30');
+      root.style.setProperty('--bg-primary', '#2f3d53');
+      root.style.setProperty('--bg-primary-rgb', '47, 61, 83');
+      root.style.setProperty('--bg-secondary', '#1f2937');
+      root.style.setProperty('--bg-secondary-rgb', '31, 41, 55');
       root.style.setProperty('--text-primary', '#ffffff');
-      root.style.setProperty('--text-secondary', '#b3b3b3');
+      root.style.setProperty('--text-secondary', '#ffedcb');
     } else {
-      root.style.setProperty('--bg-primary', '#ffffff');
-      root.style.setProperty('--bg-primary-rgb', '255, 255, 255');
-      root.style.setProperty('--bg-secondary', '#f5f5f5');
-      root.style.setProperty('--bg-secondary-rgb', '245, 245, 245');
-      root.style.setProperty('--text-primary', '#121212');
-      root.style.setProperty('--text-secondary', '#666666');
+      root.style.setProperty('--bg-primary', '#ffedcb');
+      root.style.setProperty('--bg-primary-rgb', '255, 237, 203');
+      root.style.setProperty('--bg-secondary', '#fff5e6');
+      root.style.setProperty('--bg-secondary-rgb', '255, 245, 230');
+      root.style.setProperty('--text-primary', '#2f3d53');
+      root.style.setProperty('--text-secondary', '#887456');
     }
     // Keep accent colors consistent in both themes
-    root.style.setProperty('--accent-primary', '#9c27b0');
-    root.style.setProperty('--accent-secondary', '#7b1fa2');
-    root.style.setProperty('--accent-light', '#ce93d8');
+    root.style.setProperty('--accent-primary', '#dba11c');
+    root.style.setProperty('--accent-secondary', '#887456');
+    root.style.setProperty('--accent-light', '#ffedcb');
   }
 } 

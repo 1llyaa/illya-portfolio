@@ -5,7 +5,7 @@ import { MyTechStackComponent } from '../../components/my-tech-stack/my-tech-sta
 @Component({
   selector: 'app-about-me',
   standalone: true,
-  imports: [CommonModule, MyTechStackComponent],
+  imports: [CommonModule],
   templateUrl: './about-me.component.html',
   styleUrl: './about-me.component.scss'
 })
