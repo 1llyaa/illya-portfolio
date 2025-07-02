@@ -35,3 +35,4 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         source: "dist/illya-portfolio/browser/"
         target: ${{ secrets.REMOTE_PATH }}
+        strip_components: 3
