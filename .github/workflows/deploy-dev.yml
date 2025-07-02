@@ -1,4 +1,4 @@
-name: Deploy Angular via SCP dev (SFTP)
+name: Deploy Angular via SCP (SFTP) DEV
 
 on:
   push:
