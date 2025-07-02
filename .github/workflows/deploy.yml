@@ -1,4 +1,4 @@
-name: Deploy Angular via FTP
+name: Deploy Angular (www) via SFTP
 
 on:
   push:
@@ -8,30 +8,35 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: webhosting-secrets
+    environment: vps-secrets
 
     steps:
+    # 1️⃣ Získat zdrojáky
     - name: 📥 Checkout code
       uses: actions/checkout@v3
 
+    # 2️⃣ Připravit Node + cache
     - name: 🔧 Setup Node.js
       uses: actions/setup-node@v3
       with:
         node-version: '18'
+        cache: 'npm'
 
+    # 3️⃣ Instalace
     - name: 📦 Install dependencies
       run: npm ci
 
+    # 4️⃣ Build (produkční)
     - name: 🏗️ Build Angular
       run: npm run build -- --configuration production
 
-    - name: 🚀 Deploy via FTP
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+    # 5️⃣ Nasazení přes rsync → SFTP
+    - name: 🚀 Deploy via SFTP (rsync over SSH)
+      uses: SamKirkland/web-deploy@v1
       with:
-        protocol: ftps
-        server: ${{ secrets.FTP_HOST }}
-        username: ${{ secrets.FTP_USER }}
-        password: ${{ secrets.FTP_PASS }}
-        port: ${{ secrets.FTP_PORT }}
-        local-dir: dist/illya-portfolio/browser/
-        server-dir: ${{ secrets.FTP_TARGET }}
+        target-server: ${{ secrets.SSH_HOST }}          
+        remote-user:   ${{ secrets.SSH_USER }}         
+        private-ssh-key: ${{ secrets.SSH_KEY }}        
+        source-path:   dist/illya-portfolio/browser/   
+        destination-path: ${{ secrets.REMOTE_PATH }}  
+        # rsync-options: --archive --verbose --compress --human-readable --delete-after
