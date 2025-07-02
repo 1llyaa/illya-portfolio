@@ -1,4 +1,4 @@
-name: Deploy Angular via SCP (SFTP)
+name: Deploy Angular via SCP dev (SFTP)
 
 on:
   push:
@@ -33,6 +33,6 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
-          source: "dist/illya-portfolio/browser/"
+          source: "dist/dev-portfolio/browser/"
           target: ${{ secrets.REMOTE_PATH }}
           strip_components: 3
