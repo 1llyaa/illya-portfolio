@@ -1,21 +1,21 @@
 <section id="contact" class="contact">
   <div class="container">
-    <h2>Contact Me</h2>
-    <p>Let's collaborate on your next project! Feel free to reach out through the form or social media.</p>
+    <h2>Kontaktujte mě</h2>
+    <p>Pojďme spolupracovat na vašem dalším projektu! Neváhejte mě kontaktovat přes formulář nebo sociální sítě.</p>
 
     <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
       <div class="form-group">
         <input 
           type="text" 
           formControlName="name" 
-          placeholder="Your Name" 
+          placeholder="Vaše jméno" 
           [class.invalid]="hasError('name', 'required') || hasError('name', 'minlength')"
         />
         <span class="error-message" *ngIf="hasError('name', 'required')">
-          Please enter your name
+          Zadejte prosím své jméno
         </span>
         <span class="error-message" *ngIf="hasError('name', 'minlength')">
-          Name must be at least 2 characters long
+          Jméno musí mít alespoň 2 znaky
         </span>
       </div>
 
@@ -23,14 +23,14 @@
         <input 
           type="email" 
           formControlName="email" 
-          placeholder="Your Email" 
+          placeholder="Váš email" 
           [class.invalid]="hasError('email', 'required') || hasError('email', 'email')"
         />
         <span class="error-message" *ngIf="hasError('email', 'required')">
-          Please enter your email address
+          Zadejte prosím svou emailovou adresu
         </span>
         <span class="error-message" *ngIf="hasError('email', 'email')">
-          Please enter a valid email address
+          Zadejte prosím platnou emailovou adresu
         </span>
       </div>
 
@@ -38,14 +38,14 @@
         <input 
           type="tel" 
           formControlName="phone" 
-          placeholder="Your Phone Number" 
+          placeholder="Vaše telefonní číslo" 
           [class.invalid]="hasError('phone', 'required') || hasError('phone', 'pattern')"
         />
         <span class="error-message" *ngIf="hasError('phone', 'required')">
-          Please enter your phone number
+          Zadejte prosím své telefonní číslo
         </span>
         <span class="error-message" *ngIf="hasError('phone', 'pattern')">
-          Please enter a valid phone number (e.g., +1234567890 or 123-456-7890)
+          Zadejte prosím platné telefonní číslo (např. +420123456789 nebo 123-456-789)
         </span>
       </div>
 
@@ -53,29 +53,29 @@
         <input 
           type="text" 
           formControlName="subject" 
-          placeholder="Subject" 
+          placeholder="Předmět" 
           [class.invalid]="hasError('subject', 'required') || hasError('subject', 'minlength')"
         />
         <span class="error-message" *ngIf="hasError('subject', 'required')">
-          Please enter a subject
+          Zadejte prosím předmět
         </span>
         <span class="error-message" *ngIf="hasError('subject', 'minlength')">
-          Subject must be at least 3 characters long
+          Předmět musí mít alespoň 3 znaky
         </span>
       </div>
 
       <div class="form-group">
         <textarea 
           formControlName="message" 
-          placeholder="Your Message"
+          placeholder="Vaše zpráva"
           rows="5"
           [class.invalid]="hasError('message', 'required') || hasError('message', 'minlength')"
         ></textarea>
         <span class="error-message" *ngIf="hasError('message', 'required')">
-          Please enter your message
+          Zadejte prosím svou zprávu
         </span>
         <span class="error-message" *ngIf="hasError('message', 'minlength')">
-          Message must be at least 10 characters long
+          Zpráva musí mít alespoň 10 znaků
         </span>
       </div>
 
@@ -85,7 +85,7 @@
 
       <button type="submit" [disabled]="isSubmitting">
         <i class="fas fa-paper-plane"></i>
-        {{ isSubmitting ? 'Sending...' : 'Send Message' }}
+        {{ isSubmitting ? 'Odesílám...' : 'Odeslat zprávu' }}
       </button>
     </form>
 

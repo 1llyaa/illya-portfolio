@@ -26,9 +26,11 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
+              "src/assets",
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "public",
+                "output": "/"
               }
             ],
             "styles": [
@@ -61,9 +63,9 @@
             "dev": {
               "outputPath": "dist/dev-portfolio",
               "baseHref": "/",
-              "optimization": false,
-              "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": false,        
+              "outputHashing": "all",          
+              "optimization": true        
             }
           },
           "defaultConfiguration": "production"
@@ -93,9 +95,11 @@
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
+              "src/assets",
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "public",
+                "output": "/"
               }
             ],
             "styles": [

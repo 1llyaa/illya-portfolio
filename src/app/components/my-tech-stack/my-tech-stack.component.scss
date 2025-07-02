@@ -1,0 +1,163 @@
+.my-tech-stack {
+  padding: 4rem 2rem;
+  background-color: var(--bg-secondary);
+  text-align: center;
+
+  h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--accent-primary);
+    position: relative;
+    display: inline-block;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(to right, var(--accent-primary), var(--accent-light));
+      border-radius: 2px;
+    }
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    line-height: 1.8;
+  }
+
+  .skills {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1rem;
+
+    .skill-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1.5rem;
+      border-radius: 12px;
+      background: var(--bg-primary);
+      border: 1px solid rgba(156, 39, 176, 0.1);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      height: 140px;
+      justify-content: center;
+      position: relative;
+      cursor: pointer;
+
+      // Tooltip styles
+      &::before,
+      &::after {
+        --scale: 0;
+        --arrow-size: 10px;
+        --tooltip-color: var(--bg-primary);
+
+        position: absolute;
+        top: -.25rem;
+        left: 50%;
+        transform: translateX(-50%) translateY(var(--translate-y, 0)) scale(var(--scale));
+        transition: 150ms transform;
+        transform-origin: bottom center;
+      }
+
+      &::before {
+        --translate-y: calc(-100% - var(--arrow-size));
+        
+        content: attr(data-tooltip);
+        padding: 1rem;
+        width: max-content;
+        max-width: 300px;
+        border-radius: 8px;
+        text-align: center;
+        background: var(--tooltip-color);
+        color: var(--text-primary);
+        font-size: 0.9rem;
+        font-weight: 400;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        border: 1px solid var(--accent-primary);
+      }
+
+      &::after {
+        --translate-y: calc(-1 * var(--arrow-size));
+
+        content: '';
+        border: var(--arrow-size) solid transparent;
+        border-top-color: var(--tooltip-color);
+        transform-origin: top center;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+      }
+
+      &:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent-primary);
+        box-shadow: 0 8px 30px rgba(156, 39, 176, 0.2);
+
+        &::before,
+        &::after {
+          --scale: 1;
+        }
+      }
+
+      img {
+        height: 50px;
+        width: auto;
+        max-width: 80%;
+        margin-bottom: 1.25rem;
+        object-fit: contain;
+        filter: brightness(0.9) contrast(1.1);
+        transition: transform 0.3s ease;
+      }
+
+      &:hover img {
+        transform: scale(1.1);
+      }
+
+      span {
+        font-weight: 500;
+        color: var(--text-primary);
+        font-size: 1rem;
+        line-height: 1;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .skills {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+
+      .skill-card {
+        &::before {
+          max-width: 200px;
+          font-size: 0.85rem;
+          padding: 0.75rem;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .skills {
+      grid-template-columns: 1fr;
+      max-width: 280px;
+
+      .skill-card {
+        &::before {
+          max-width: 250px;
+          white-space: normal;
+          font-size: 0.85rem;
+          padding: 0.75rem;
+        }
+      }
+    }
+  }
+} 

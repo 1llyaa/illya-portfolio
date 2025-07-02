@@ -1,4 +1,4 @@
-name: Deploy Angular via SCP (SFTP)
+name: Deploy Angular via SCP (SFTP) DEV
 
 on:
   push:
@@ -24,7 +24,7 @@ jobs:
         run: npm ci
 
       - name: 🏗️ Build Angular
-        run: npm run build -- --configuration production
+        run: npm run build -- --configuration=dev
 
       - name: 📤 Upload files via SCP
         uses: appleboy/scp-action@v0.1.4
@@ -33,6 +33,6 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
-          source: "dist/illya-portfolio/browser/"
+          source: "dist/dev-portfolio/browser/"
           target: ${{ secrets.REMOTE_PATH }}
           strip_components: 3
