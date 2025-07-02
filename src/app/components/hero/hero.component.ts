@@ -11,7 +11,7 @@ import { ThemeService } from '../../services/theme.service';
 })
 export class HeroComponent {
   themeService = inject(ThemeService);
-  
+
   get darkmode(): boolean {
     return this.themeService.isDark();
   }

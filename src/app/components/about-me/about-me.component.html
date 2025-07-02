@@ -1,16 +1,16 @@
 <div id="about-me" class="page-container">
   <div class="cv-section">
-    <h2 class="section-title">My Portfolio</h2>
+    <h2 class="section-title">Mé zkušenosti</h2>
 
     <div class="cv-container">
       <div class="cv-header">
         <div class="cv-profile">
           <div class="cv-avatar">
-            <img src="assets/images/profile.webp" alt="Illya's Profile Picture">
+            <img src="assets/images/profile.png" alt="Illya's Profile Picture">
           </div>
           <div class="cv-profile-info">
             <h1 class="cv-name">Illya Miloserdov</h1>
-            <h2 class="cv-title">Frontend Angular Developer</h2>
+            <h2 class="cv-title">Fullstack Developer</h2>
             <div class="cv-contact-info">
               <div class="cv-contact-item">
                 <span class="icon">
@@ -18,7 +18,7 @@
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                   </svg>
                 </span>
-                <span>+45 91 92 72 91</span>
+                <span>+420 773 241 363</span>
               </div>
               <div class="cv-contact-item">
                 <span class="icon">
@@ -27,7 +27,7 @@
                     <polyline points="22,6 12,13 2,6"></polyline>
                   </svg>
                 </span>
-                <span>ilja.miloserdov&#64;outlook.com</span>
+                <span>illya&#64;miloserdov.cz</span>
               </div>
               <div class="cv-contact-item">
                 <span class="icon">
@@ -36,7 +36,7 @@
                     <circle cx="12" cy="10" r="3"></circle>
                   </svg>
                 </span>
-                <span>Copenhagen, Denmark</span>
+                <span>Česká Republika, České Budějovice</span>
               </div>
             </div>
           </div>
@@ -50,7 +50,7 @@
                 <line x1="12" y1="15" x2="12" y2="3"></line>
               </svg>
             </span>
-            Download PDF
+            Stáhnout PDF
           </a>
         </div>
       </div>
@@ -58,95 +58,54 @@
       <div class="cv-body">
         <div class="cv-column">
           <div class="cv-section-group">
-            <h3 class="cv-section-title">About</h3>
+            <h3 class="cv-section-title">O mně</h3>
             <p class="cv-about-text">
-              I'm a passionate Front-end developer who thrives on creating elegant, responsive web applications using Angular. With a keen eye for design and a deep understanding of user experience, I transform complex requirements into intuitive interfaces that users love.
+              Jsem zapálený full stack vývojář. Primárně se zaměřuji na backend, ale frontend též neuškodí. Pro své projekty primárně používám Python na backend a Angular na frontend. Pokud zrovna nejsem vnořený do kódu nějaké webové aplikace, tak vytvářím e-shopy pomocí Wordpress nebo Shopify.
             </p>
             <p class="cv-about-text">
-              My commitment to writing clean, maintainable code and staying current with the latest web technologies enables me to build high-performance applications that meet modern standards.
+              Práce v týmu je pro mě potěšením jako šálek dobré kávy. Spolupráce na projektech mě nabíjí, protože věřím, že společně dosahujeme lepších výsledků, než bychom dokázali sami.
             </p>
           </div>
 
           <div class="cv-section-group">
-            <h3 class="cv-section-title">Experience</h3>
+            <h3 class="cv-section-title">Zkušenosti</h3>
 
             <div class="cv-timeline">
-              <div class="cv-timeline-item">
-                <div class="cv-timeline-dot"></div>
-                <div class="cv-timeline-content">
-                  <div class="cv-timeline-header">
-                    <h4>Frontend Angular Developer</h4>
-                    <span class="cv-company">Global Tech Solutions</span>
-                    <span class="cv-date">2021 - Present</span>
+              @for (item of timeline_items; track $index) {
+                <div class="cv-timeline-item">
+                  <div class="cv-timeline-dot"></div>
+                  <div class="cv-timeline-content">
+                    <div class="cv-timeline-header">
+                      <h4>{{ item.header }}</h4>
+                      <span class="cv-company">{{ item.company }}</span>
+                      <span class="cv-date">{{ item.years }}</span>
+                    </div>
+                    <ul class="cv-responsibilities">
+                      @for (skill of item.skills; track $index) {
+                        <li>{{ skill }}</li>
+                      }
+                    </ul>
                   </div>
-                  <ul class="cv-responsibilities">
-                    <li>Developed responsive web applications using Angular 13+</li>
-                    <li>Implemented UI components with Angular Material and custom CSS</li>
-                    <li>Collaborated with backend developers to integrate RESTful APIs</li>
-                    <li>Applied RxJS for effective state management and reactive programming</li>
-                    <li>Performed code reviews and mentored junior developers</li>
-                  </ul>
                 </div>
-              </div>
-
-              <div class="cv-timeline-item">
-                <div class="cv-timeline-dot"></div>
-                <div class="cv-timeline-content">
-                  <div class="cv-timeline-header">
-                    <h4>Web Developer</h4>
-                    <span class="cv-company">Digital Innovation Agency</span>
-                    <span class="cv-date">2019 - 2021</span>
-                  </div>
-                  <ul class="cv-responsibilities">
-                    <li>Built interactive web applications using modern JavaScript frameworks</li>
-                    <li>Designed and implemented responsive layouts with HTML5/CSS3</li>
-                    <li>Optimized website performance and improved SEO metrics</li>
-                    <li>Collaborated in agile development teams using Git and JIRA</li>
-                  </ul>
-                </div>
-              </div>
+              }
             </div>
           </div>
         </div>
 
         <div class="cv-column">
           <div class="cv-section-group">
-            <h3 class="cv-section-title">Technical Skills</h3>
-
+            <h3 class="cv-section-title">Technické dovednosti</h3>
             <div class="cv-skills">
-              <div class="cv-skill-category">
-                <h4>Frontend Development</h4>
-                <div class="cv-skill-badges">
-                  <span class="cv-skill-badge">Angular</span>
-                  <span class="cv-skill-badge">TypeScript</span>
-                  <span class="cv-skill-badge">JavaScript</span>
-                  <span class="cv-skill-badge">HTML5</span>
-                  <span class="cv-skill-badge">CSS3/SCSS</span>
-                  <span class="cv-skill-badge">RxJS</span>
+              @for (skill of skillCategories; track $index) {
+                <div class="cv-skill-category">
+                  <h4>{{ skill.title }}</h4>
+                  <div class="cv-skill-badges">
+                    @for (badge of skill.skills; track $index) {
+                      <span class="cv-skill-badge">{{ badge }}</span>
+                    }
+                  </div>
                 </div>
-              </div>
-
-              <div class="cv-skill-category">
-                <h4>Frameworks &amp; Libraries</h4>
-                <div class="cv-skill-badges">
-                  <span class="cv-skill-badge">Angular Material</span>
-                  <span class="cv-skill-badge">Bootstrap</span>
-                  <span class="cv-skill-badge">NgRx</span>
-                  <span class="cv-skill-badge">Tailwind CSS</span>
-                  <span class="cv-skill-badge">Jasmine</span>
-                </div>
-              </div>
-
-              <div class="cv-skill-category">
-                <h4>Tools &amp; Platforms</h4>
-                <div class="cv-skill-badges">
-                  <span class="cv-skill-badge">Git</span>
-                  <span class="cv-skill-badge">Webpack</span>
-                  <span class="cv-skill-badge">npm</span>
-                  <span class="cv-skill-badge">Firebase</span>
-                  <span class="cv-skill-badge">Azure</span>
-                </div>
-              </div>
+              }
             </div>
           </div>
 
