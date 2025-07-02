@@ -1,4 +1,4 @@
-name: Deploy Angular via FTP
+name: Deploy Angular via SCP (SFTP)
 
 on:
   push:
@@ -8,7 +8,8 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: webhosting-secrets
+    environment:
+      name: vps-secrets
 
     steps:
     - name: 📥 Checkout code
@@ -25,13 +26,13 @@ jobs:
     - name: 🏗️ Build Angular
       run: npm run build -- --configuration production
 
-    - name: 🚀 Deploy via FTP
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+    - name: 📤 Upload files via SCP
+      uses: appleboy/scp-action@v0.1.4
       with:
-        protocol: ftps
-        server: ${{ secrets.FTP_HOST }}
-        username: ${{ secrets.FTP_USER }}
-        password: ${{ secrets.FTP_PASS }}
-        port: ${{ secrets.FTP_PORT }}
-        local-dir: dist/illya-portfolio/browser/
-        server-dir: ${{ secrets.FTP_TARGET }}
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_KEY }}
+        port: ${{ secrets.SSH_PORT }}
+        source: "dist/illya-portfolio/browser/"
+        target: ${{ secrets.REMOTE_PATH }}
+        strip_components: 3
