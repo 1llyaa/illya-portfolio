@@ -1,4 +1,4 @@
-name: Deploy Angular (www) via SFTP
+name: Deploy Angular via SCP (SFTP)
 
 on:
   push:
@@ -8,35 +8,30 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: vps-secrets
+    environment:
+      name: vps-secrets
 
     steps:
-    # 1️⃣ Získat zdrojáky
     - name: 📥 Checkout code
       uses: actions/checkout@v3
 
-    # 2️⃣ Připravit Node + cache
     - name: 🔧 Setup Node.js
       uses: actions/setup-node@v3
       with:
         node-version: '18'
-        cache: 'npm'
 
-    # 3️⃣ Instalace
     - name: 📦 Install dependencies
       run: npm ci
 
-    # 4️⃣ Build (produkční)
     - name: 🏗️ Build Angular
       run: npm run build -- --configuration production
 
-    # 5️⃣ Nasazení přes rsync → SFTP
-    - name: 🚀 Deploy via SFTP (rsync over SSH)
-      uses: SamKirkland/web-deploy@v1
+    - name: 📤 Upload files via SCP
+      uses: appleboy/scp-action@v0.1.4
       with:
-        target-server: ${{ secrets.SSH_HOST }}          
-        remote-user:   ${{ secrets.SSH_USER }}         
-        private-ssh-key: ${{ secrets.SSH_KEY }}        
-        source-path:   dist/illya-portfolio/browser/   
-        destination-path: ${{ secrets.REMOTE_PATH }}  
-        # rsync-options: --archive --verbose --compress --human-readable --delete-after
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_KEY }}
+        port: ${{ secrets.SSH_PORT }}
+        source: "dist/illya-portfolio/browser/*"
+        target: ${{ secrets.REMOTE_PATH }}
