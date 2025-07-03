@@ -1,15 +1,15 @@
 <header class="header" [class.hide]="!isHeaderVisible">
-  <div class="container">
-    <a routerLink="/" class="logo">
-      <!-- <img src="assets/images/logo.webp" alt="Miloserdov Logo" class="logo-img"> -->
-    </a>
+    <div class="container">
+        <a routerLink="/" class="logo">
+            <!-- <img src="assets/images/logo.webp" alt="Miloserdov Logo" class="logo-img"> -->
+        </a>
 
-    <nav [class.active]="isMenuOpen">
-      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
-      <a href="#about-me">About me</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-      <!--<div class="theme-toggle">
+        <nav [class.active]="isMenuOpen">
+            <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+            <a href="#about-me">About me</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+            <!--<div class="theme-toggle">
         <input
           type="checkbox"
           id="theme-switch"
@@ -27,12 +27,12 @@
           </svg>
         </label>
       </div>-->
-    </nav>
+        </nav>
 
-    <button class="burger" [class.open]="isMenuOpen" (click)="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </div>
+        <button class="burger" [class.open]="isMenuOpen" (click)="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
 </header>

@@ -1,149 +1,197 @@
 <div id="about-me" class="page-container">
-  <div class="cv-section">
-    <h2 class="section-title">My experience</h2>
+    <div class="cv-section">
+        <h2 class="section-title">My experience</h2>
 
-    <div class="cv-container">
-      <div class="cv-header">
-        <div class="cv-profile">
-          <div class="cv-avatar">
-            <img src="assets/images/profile.png" alt="Illya's Profile Picture">
-          </div>
-          <div class="cv-profile-info">
-            <h1 class="cv-name">Illya Miloserdov</h1>
-            <h2 class="cv-title">Fullstack Developer</h2>
-            <div class="cv-contact-info">
-              <div class="cv-contact-item">
-                <span class="icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                  </svg>
-                </span>
-                <span>+420 773 241 363</span>
-              </div>
-              <div class="cv-contact-item">
-                <span class="icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                    <polyline points="22,6 12,13 2,6"></polyline>
-                  </svg>
-                </span>
-                <span>illya&#64;miloserdov.cz</span>
-              </div>
-              <div class="cv-contact-item">
-                <span class="icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                    <circle cx="12" cy="10" r="3"></circle>
-                  </svg>
-                </span>
-                <span>Czechia, České Budějovice</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="cv-download">
-          <a href="assets/files/Porfolio.pdf" target="_blank" class="btn-download">
-            <span class="icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                <polyline points="7 10 12 15 17 10"></polyline>
-                <line x1="12" y1="15" x2="12" y2="3"></line>
-              </svg>
-            </span>
-            Download PDF
-          </a>
-        </div>
-      </div>
-
-      <div class="cv-body">
-        <div class="cv-column">
-          <div class="cv-section-group">
-            <h3 class="cv-section-title">About me</h3>
-            <p class="cv-about-text">
-                I'm a passionate full-stack developer. I mainly focus on backend, but I don’t mind doing frontend either. For my projects, I usually use Python for the backend and Angular for the frontend. When I’m not deep in web app code, I build e-shops using WordPress or Shopify.
-            </p>
-            <p class="cv-about-text">
-                Working in a team is as enjoyable for me as a good cup of coffee. Collaborating on projects gives me energy because I believe we achieve better results together than we ever could alone.
-            </p>
-          </div>
-
-          <div class="cv-section-group">
-            <h3 class="cv-section-title">Experience</h3>
-
-            <div class="cv-timeline">
-              @for (item of cvTimelineItems; track $index) {
-                <div class="cv-timeline-item">
-                  <div class="cv-timeline-dot"></div>
-                  <div class="cv-timeline-content">
-                    <div class="cv-timeline-header">
-                      <h4>{{ item.header }}</h4>
-                      <span class="cv-company">{{ item.company }}</span>
-                      <span class="cv-date">{{ item.years }}</span>
+        <div class="cv-container">
+            <div class="cv-header">
+                <div class="cv-profile">
+                    <div class="cv-avatar">
+                        <img src="assets/images/profile.png" alt="Illya's Profile Picture" />
                     </div>
-                    <ul class="cv-responsibilities">
-                      @for (skill of item.skills; track $index) {
-                        <li>{{ skill }}</li>
-                      }
-                    </ul>
-                  </div>
-                </div>
-              }
-            </div>
-          </div>
-        </div>
-
-        <div class="cv-column">
-          <div class="cv-section-group">
-            <h3 class="cv-section-title">Technical skills</h3>
-            <div class="cv-skills">
-              @for (skill of skillCategories; track $index) {
-                <div class="cv-skill-category">
-                  <h4>{{ skill.title }}</h4>
-                  <div class="cv-skill-badges">
-                    @for (badge of skill.skills; track $index) {
-                      <span class="cv-skill-badge">{{ badge }}</span>
-                    }
-                  </div>
-                </div>
-              }
-            </div>
-          </div>
-
-          <div class="cv-section-group">
-            <h3 class="cv-section-title">Education</h3>
-
-            <div class="cv-education">
-                @for (education_item of cvEducationItems; track $index) {
-                    <div class="cv-education-item">
-                        <h4>{{ education_item.title }}</h4>
-                        <div class="cv-education-details">
-                            <span class="cv-institution">{{ education_item.institution }}</span>
-                            <span class="cv-date">{{ education_item.date }}</span>
+                    <div class="cv-profile-info">
+                        <h1 class="cv-name">Illya Miloserdov</h1>
+                        <h2 class="cv-title">Fullstack Developer</h2>
+                        <div class="cv-contact-info">
+                            <div class="cv-contact-item">
+                                <span class="icon">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="18"
+                                        height="18"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
+                                        <path
+                                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                                        ></path>
+                                    </svg>
+                                </span>
+                                <span>+420 773 241 363</span>
+                            </div>
+                            <div class="cv-contact-item">
+                                <span class="icon">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="18"
+                                        height="18"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
+                                        <path
+                                            d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                                        ></path>
+                                        <polyline points="22,6 12,13 2,6"></polyline>
+                                    </svg>
+                                </span>
+                                <span>illya&#64;miloserdov.cz</span>
+                            </div>
+                            <div class="cv-contact-item">
+                                <span class="icon">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="18"
+                                        height="18"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                </span>
+                                <span>Czechia, České Budějovice</span>
+                            </div>
                         </div>
-                        <p class="cv-education-description">
-                            {{ education_item.description }}
+                    </div>
+                </div>
+                <div class="cv-download">
+                    <a href="assets/files/cv.pdf" target="_blank" class="btn-download">
+                        <span class="icon">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                        </span>
+                        Download PDF
+                    </a>
+                </div>
+            </div>
+
+            <div class="cv-body">
+                <div class="cv-column">
+                    <div class="cv-section-group">
+                        <h3 class="cv-section-title">About me</h3>
+                        <p class="cv-about-text">
+                            I'm a passionate full-stack developer. I mainly focus on backend, but I don’t mind doing
+                            frontend either. For my projects, I usually use Python for the backend and Angular for the
+                            frontend. When I’m not deep in web app code, I build e-shops using WordPress or Shopify.
+                        </p>
+                        <p class="cv-about-text">
+                            Working in a team is as enjoyable for me as a good cup of coffee. Collaborating on projects
+                            gives me energy because I believe we achieve better results together than we ever could
+                            alone.
                         </p>
                     </div>
-                }
-            </div>
-          </div>
 
-          <div class="cv-section-group">
-            <h3 class="cv-section-title">Language knowledge</h3>
+                    <div class="cv-section-group">
+                        <h3 class="cv-section-title">Experience</h3>
 
-            <div class="cv-languages">
-              @for (language of languages; track $index) {
-                <div class="cv-language-item">
-                  <span class="cv-language">{{ language.language }}</span>
-                  <div class="cv-language-level">
-                    <span class="cv-language-proficiency">{{ language.skill_level }}</span>
-                  </div>
+                        <div class="cv-timeline">
+                            @for (item of cvTimelineItems; track $index) {
+                                <div class="cv-timeline-item">
+                                    <div class="cv-timeline-dot"></div>
+                                    <div class="cv-timeline-content">
+                                        <div class="cv-timeline-header">
+                                            <h4>{{ item.header }}</h4>
+                                            <span class="cv-company">{{ item.company }}</span>
+                                            <span class="cv-date">{{ item.years }}</span>
+                                        </div>
+                                        <ul class="cv-responsibilities">
+                                            @for (skill of item.skills; track $index) {
+                                                <li>{{ skill }}</li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
                 </div>
-              }
+
+                <div class="cv-column">
+                    <div class="cv-section-group">
+                        <h3 class="cv-section-title">Technical skills</h3>
+                        <div class="cv-skills">
+                            @for (skill of skillCategories; track $index) {
+                                <div class="cv-skill-category">
+                                    <h4>{{ skill.title }}</h4>
+                                    <div class="cv-skill-badges">
+                                        @for (badge of skill.skills; track $index) {
+                                            <span class="cv-skill-badge">{{ badge }}</span>
+                                        }
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="cv-section-group">
+                        <h3 class="cv-section-title">Education</h3>
+
+                        <div class="cv-education">
+                            @for (education_item of cvEducationItems; track $index) {
+                                <div class="cv-education-item">
+                                    <h4>{{ education_item.title }}</h4>
+                                    <div class="cv-education-details">
+                                        <span class="cv-institution">{{ education_item.institution }}</span>
+                                        <span class="cv-date">{{ education_item.date }}</span>
+                                    </div>
+                                    <p class="cv-education-description">
+                                        {{ education_item.description }}
+                                    </p>
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="cv-section-group">
+                        <h3 class="cv-section-title">Language knowledge</h3>
+
+                        <div class="cv-languages">
+                            @for (language of languages; track $index) {
+                                <div class="cv-language-item">
+                                    <span class="cv-language">{{ language.language }}</span>
+                                    <div class="cv-language-level">
+                                        <span class="cv-language-proficiency">{{ language.skill_level }}</span>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>

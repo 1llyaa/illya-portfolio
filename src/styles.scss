@@ -1,63 +1,65 @@
 // Custom properties for theme colors
 :root {
-  --bg-primary: #2f3d53;
-  --bg-primary-rgb: 47, 61, 83;
-  --bg-secondary: #1f2937;
-  --bg-secondary-rgb: 31, 41, 55;
-  --text-primary: #ffffff;
-  --text-secondary: #ffedcb;
-  --accent-primary: #dba11c;
-  --accent-secondary: #887456;
-  --accent-light: #ffedcb;
+    --bg-primary: #2f3d53;
+    --bg-primary-rgb: 47, 61, 83;
+    --bg-secondary: #1f2937;
+    --bg-secondary-rgb: 31, 41, 55;
+    --text-primary: #ffffff;
+    --text-secondary: #ffedcb;
+    --accent-primary: #dba11c;
+    --accent-secondary: #887456;
+    --accent-light: #ffedcb;
 }
 
 // Global styles
 body {
-  margin: 0;
-  padding: 0;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  font-family: 'Roboto', sans-serif;
-  line-height: 1.6;
-  transition: background-color 0.3s ease, color 0.3s ease;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
 }
 
 // Scrollbar styling
 ::-webkit-scrollbar {
-  width: 10px;
+    width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-secondary);
+    background: var(--bg-secondary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--accent-primary);
-  border-radius: 5px;
+    background: var(--accent-primary);
+    border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-secondary);
+    background: var(--accent-secondary);
 }
 
 // Global link styles
 a {
-  color: var(--accent-light);
-  text-decoration: none;
-  transition: color 0.3s ease;
+    color: var(--accent-light);
+    text-decoration: none;
+    transition: color 0.3s ease;
 
-  &:hover {
-    color: var(--accent-primary);
-  }
+    &:hover {
+        color: var(--accent-primary);
+    }
 }
 
 // Selection color
 ::selection {
-  background: var(--accent-primary);
-  color: var(--text-primary);
+    background: var(--accent-primary);
+    color: var(--text-primary);
 }
 
 // Smooth scrolling
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }

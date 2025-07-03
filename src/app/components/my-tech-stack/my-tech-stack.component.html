@@ -1,17 +1,19 @@
 <section id="my-tech-stack" class="my-tech-stack">
-  <div class="container">
-    <h2>Technologies I use</h2>
-    <p>
-      I'm a full-stack developer focused on backend and e-commerce solutions. In my free time, I work on developing online stores and improving their performance. I have experience with the full development of web applications, from the database to the frontend.
-    </p>
+    <div class="container">
+        <h2>Technologies I use</h2>
+        <p>
+            I'm a full-stack developer focused on backend and e-commerce solutions. In my free time, I work on
+            developing online stores and improving their performance. I have experience with the full development of web
+            applications, from the database to the frontend.
+        </p>
 
-    <div class="skills">
-        @for (skill of skills; track $index) {
-            <div class="skill-card" [attr.data-tooltip]="skill.tooltip">
-                <img [src]="skill.img" [alt]="skill.alt" />
-                <span>{{ skill.label }}</span>
-            </div>
-        }
+        <div class="skills">
+            @for (skill of skills; track $index) {
+                <div class="skill-card" [attr.data-tooltip]="skill.tooltip">
+                    <img [src]="skill.img" [alt]="skill.alt" />
+                    <span>{{ skill.label }}</span>
+                </div>
+            }
+        </div>
     </div>
-  </div>
 </section>

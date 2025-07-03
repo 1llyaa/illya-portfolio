@@ -1,107 +1,123 @@
 <section id="contact" class="contact">
-  <div class="container">
-    <h2>Kontaktujte mě</h2>
-    <p>Pojďme spolupracovat na vašem dalším projektu! Neváhejte mě kontaktovat přes formulář nebo sociální sítě.</p>
+    <div class="container">
+        <h2>Contact me</h2>
+        <p>
+            Let’s work together on your next project! Feel free to reach out via the contact form or through social
+            media.
+        </p>
 
-    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
-      <div class="form-group">
-        <input 
-          type="text" 
-          formControlName="name" 
-          placeholder="Vaše jméno" 
-          [class.invalid]="hasError('name', 'required') || hasError('name', 'minlength')"
-        />
-        <span class="error-message" *ngIf="hasError('name', 'required')">
-          Zadejte prosím své jméno
-        </span>
-        <span class="error-message" *ngIf="hasError('name', 'minlength')">
-          Jméno musí mít alespoň 2 znaky
-        </span>
-      </div>
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+            <div class="form-group">
+                <input
+                    type="text"
+                    formControlName="name"
+                    placeholder="Name"
+                    [class.invalid]="hasError('name', 'required') || hasError('name', 'minlength')"
+                />
+                @if (hasError('name', 'required')) {
+                    <span class="error-message"> Please enter your name </span>
+                }
+                @if (hasError('name', 'minlength')) {
+                    <span class="error-message"> Name must be at least 2 characters long </span>
+                }
+            </div>
 
-      <div class="form-group">
-        <input 
-          type="email" 
-          formControlName="email" 
-          placeholder="Váš email" 
-          [class.invalid]="hasError('email', 'required') || hasError('email', 'email')"
-        />
-        <span class="error-message" *ngIf="hasError('email', 'required')">
-          Zadejte prosím svou emailovou adresu
-        </span>
-        <span class="error-message" *ngIf="hasError('email', 'email')">
-          Zadejte prosím platnou emailovou adresu
-        </span>
-      </div>
+            <div class="form-group">
+                <input
+                    type="email"
+                    formControlName="email"
+                    placeholder="Email"
+                    [class.invalid]="hasError('email', 'required') || hasError('email', 'email')"
+                />
+                @if (hasError('email', 'required')) {
+                    <span class="error-message"> Please enter your email address </span>
+                }
+                @if (hasError('email', 'email')) {
+                    <span class="error-message"> Please enter a valid email address </span>
+                }
+            </div>
 
-      <div class="form-group">
-        <input 
-          type="tel" 
-          formControlName="phone" 
-          placeholder="Vaše telefonní číslo" 
-          [class.invalid]="hasError('phone', 'required') || hasError('phone', 'pattern')"
-        />
-        <span class="error-message" *ngIf="hasError('phone', 'required')">
-          Zadejte prosím své telefonní číslo
-        </span>
-        <span class="error-message" *ngIf="hasError('phone', 'pattern')">
-          Zadejte prosím platné telefonní číslo (např. +420123456789 nebo 123-456-789)
-        </span>
-      </div>
+            <div class="form-group">
+                <input
+                    type="tel"
+                    formControlName="phone"
+                    placeholder="Phone number"
+                    [class.invalid]="hasError('phone', 'required') || hasError('phone', 'pattern')"
+                />
+                @if (hasError('phone', 'required')) {
+                    <span class="error-message"> Please enter your phone number </span>
+                }
+                @if (hasError('phone', 'pattern')) {
+                    <span class="error-message">
+                        Please enter a valid phone number (e.g. +420123456789 or 123-456-789)
+                    </span>
+                }
+            </div>
 
-      <div class="form-group">
-        <input 
-          type="text" 
-          formControlName="subject" 
-          placeholder="Předmět" 
-          [class.invalid]="hasError('subject', 'required') || hasError('subject', 'minlength')"
-        />
-        <span class="error-message" *ngIf="hasError('subject', 'required')">
-          Zadejte prosím předmět
-        </span>
-        <span class="error-message" *ngIf="hasError('subject', 'minlength')">
-          Předmět musí mít alespoň 3 znaky
-        </span>
-      </div>
+            <div class="form-group">
+                <input
+                    type="text"
+                    formControlName="subject"
+                    placeholder="Subject"
+                    [class.invalid]="hasError('subject', 'required') || hasError('subject', 'minlength')"
+                />
+                @if (hasError('subject', 'required')) {
+                    <span class="error-message"> Please enter a subject </span>
+                }
+                @if (hasError('subject', 'minlength')) {
+                    <span class="error-message"> Subject must be at least 3 characters long </span>
+                }
+            </div>
 
-      <div class="form-group">
-        <textarea 
-          formControlName="message" 
-          placeholder="Vaše zpráva"
-          rows="5"
-          [class.invalid]="hasError('message', 'required') || hasError('message', 'minlength')"
-        ></textarea>
-        <span class="error-message" *ngIf="hasError('message', 'required')">
-          Zadejte prosím svou zprávu
-        </span>
-        <span class="error-message" *ngIf="hasError('message', 'minlength')">
-          Zpráva musí mít alespoň 10 znaků
-        </span>
-      </div>
+            <div class="form-group">
+                <textarea
+                    formControlName="message"
+                    placeholder="Your message"
+                    rows="5"
+                    [class.invalid]="hasError('message', 'required') || hasError('message', 'minlength')"
+                ></textarea>
+                @if (hasError('message', 'required')) {
+                    <span class="error-message"> Please enter your message </span>
+                }
+                @if (hasError('message', 'minlength')) {
+                    <span class="error-message"> Message must be at least 10 characters long </span>
+                }
+            </div>
 
-      <div class="status-message" *ngIf="submitStatus" [class.success]="submitStatus.success" [class.error]="!submitStatus.success">
-        {{ submitStatus.message }}
-      </div>
+            @if (submitStatus) {
+                <div
+                    class="status-message"
+                    [class.success]="submitStatus.success"
+                    [class.error]="!submitStatus.success"
+                >
+                    {{ submitStatus.message }}
+                </div>
+            }
 
-      <button type="submit" [disabled]="isSubmitting">
-        <i class="fas fa-paper-plane"></i>
-        {{ isSubmitting ? 'Odesílám...' : 'Odeslat zprávu' }}
-      </button>
-    </form>
+            <button type="submit" [disabled]="isSubmitting">
+                <i class="fas fa-paper-plane"></i>
+                {{ isSubmitting ? 'Sending...' : 'Send Message' }}
+            </button>
+        </form>
 
-    <div class="socials">
-      <a href="https://github.com/1llyaa" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
-        <i class="fab fa-github"></i>
-        <span>GitHub</span>
-      </a>
-      <a href="https://www.linkedin.com/in/illya-miloserdov-b8050a253/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
-        <i class="fab fa-linkedin"></i>
-        <span>LinkedIn</span>
-      </a>
-      <a href="mailto:illyamiloserdov@skaut.cz" aria-label="Email Me">
-        <i class="fas fa-envelope"></i>
-        <span>Email</span>
-      </a>
+        <div class="socials">
+            <a href="https://github.com/1llyaa" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+                <i class="fab fa-github"></i>
+                <span>GitHub</span>
+            </a>
+            <a
+                href="https://www.linkedin.com/in/illya-miloserdov-b8050a253/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn Profile"
+            >
+                <i class="fab fa-linkedin"></i>
+                <span>LinkedIn</span>
+            </a>
+            <a href="mailto:illyamiloserdov@skaut.cz" aria-label="Email Me">
+                <i class="fas fa-envelope"></i>
+                <span>Email</span>
+            </a>
+        </div>
     </div>
-  </div>
 </section>
