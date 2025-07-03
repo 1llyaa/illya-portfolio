@@ -1,0 +1,35 @@
+# Ignore build output
+dist/
+out-tsc/
+coverage/
+
+# Ignore dependencies
+node_modules/
+
+# Ignore environment files (optional)
+src/environments/
+
+# Ignore version control files
+.git/
+.gitignore
+
+# Ignore IDE settings
+.vscode/
+
+# Ignore Angular CLI config files (optional)
+angular.json
+package-lock.json
+package.json
+
+# Ignore formatted assets (optional)
+*.svg
+*.png
+*.jpg
+*.ico
+
+# Ignore generated files
+**/*.generated.ts
+
+# Optional: ignore formatting of specific test snapshots or legacy files
+**/*.snap
+**/legacy/**/*.ts
