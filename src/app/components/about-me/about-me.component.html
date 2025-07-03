@@ -1,6 +1,6 @@
 <div id="about-me" class="page-container">
   <div class="cv-section">
-    <h2 class="section-title">Mé zkušenosti</h2>
+    <h2 class="section-title">My experience</h2>
 
     <div class="cv-container">
       <div class="cv-header">
@@ -36,7 +36,7 @@
                     <circle cx="12" cy="10" r="3"></circle>
                   </svg>
                 </span>
-                <span>Česká Republika, České Budějovice</span>
+                <span>Czechia, České Budějovice</span>
               </div>
             </div>
           </div>
@@ -50,7 +50,7 @@
                 <line x1="12" y1="15" x2="12" y2="3"></line>
               </svg>
             </span>
-            Stáhnout PDF
+            Download PDF
           </a>
         </div>
       </div>
@@ -58,20 +58,20 @@
       <div class="cv-body">
         <div class="cv-column">
           <div class="cv-section-group">
-            <h3 class="cv-section-title">O mně</h3>
+            <h3 class="cv-section-title">About me</h3>
             <p class="cv-about-text">
-              Jsem zapálený full stack vývojář. Primárně se zaměřuji na backend, ale frontend též neuškodí. Pro své projekty primárně používám Python na backend a Angular na frontend. Pokud zrovna nejsem vnořený do kódu nějaké webové aplikace, tak vytvářím e-shopy pomocí Wordpress nebo Shopify.
+                I'm a passionate full-stack developer. I mainly focus on backend, but I don’t mind doing frontend either. For my projects, I usually use Python for the backend and Angular for the frontend. When I’m not deep in web app code, I build e-shops using WordPress or Shopify.
             </p>
             <p class="cv-about-text">
-              Práce v týmu je pro mě potěšením jako šálek dobré kávy. Spolupráce na projektech mě nabíjí, protože věřím, že společně dosahujeme lepších výsledků, než bychom dokázali sami.
+                Working in a team is as enjoyable for me as a good cup of coffee. Collaborating on projects gives me energy because I believe we achieve better results together than we ever could alone.
             </p>
           </div>
 
           <div class="cv-section-group">
-            <h3 class="cv-section-title">Zkušenosti</h3>
+            <h3 class="cv-section-title">Experience</h3>
 
             <div class="cv-timeline">
-              @for (item of timeline_items; track $index) {
+              @for (item of cvTimelineItems; track $index) {
                 <div class="cv-timeline-item">
                   <div class="cv-timeline-dot"></div>
                   <div class="cv-timeline-content">
@@ -94,7 +94,7 @@
 
         <div class="cv-column">
           <div class="cv-section-group">
-            <h3 class="cv-section-title">Technické dovednosti</h3>
+            <h3 class="cv-section-title">Technical skills</h3>
             <div class="cv-skills">
               @for (skill of skillCategories; track $index) {
                 <div class="cv-skill-category">
@@ -113,52 +113,33 @@
             <h3 class="cv-section-title">Education</h3>
 
             <div class="cv-education">
-              <div class="cv-education-item">
-                <h4>Bachelor of Computer Science</h4>
-                <div class="cv-education-details">
-                  <span class="cv-institution">Copenhagen University</span>
-                  <span class="cv-date">2016 - 2020</span>
-                </div>
-                <p class="cv-education-description">
-                  Specialized in Web Technologies and Software Development. Completed coursework in algorithms, data structures, database systems, and UI/UX design.
-                </p>
-              </div>
-
-              <div class="cv-education-item">
-                <h4>Frontend Development Certification</h4>
-                <div class="cv-education-details">
-                  <span class="cv-institution">Angular Academy</span>
-                  <span class="cv-date">2019</span>
-                </div>
-                <p class="cv-education-description">
-                  Intensive program focused on modern Angular development practices, component architecture, and state management.
-                </p>
-              </div>
+                @for (education_item of cvEducationItems; track $index) {
+                    <div class="cv-education-item">
+                        <h4>{{ education_item.title }}</h4>
+                        <div class="cv-education-details">
+                            <span class="cv-institution">{{ education_item.institution }}</span>
+                            <span class="cv-date">{{ education_item.date }}</span>
+                        </div>
+                        <p class="cv-education-description">
+                            {{ education_item.description }}
+                        </p>
+                    </div>
+                }
             </div>
           </div>
 
           <div class="cv-section-group">
-            <h3 class="cv-section-title">Languages</h3>
+            <h3 class="cv-section-title">Language knowledge</h3>
 
             <div class="cv-languages">
-              <div class="cv-language-item">
-                <span class="cv-language">English</span>
-                <div class="cv-language-level">
-                  <span class="cv-language-proficiency">Fluent</span>
+              @for (language of languages; track $index) {
+                <div class="cv-language-item">
+                  <span class="cv-language">{{ language.language }}</span>
+                  <div class="cv-language-level">
+                    <span class="cv-language-proficiency">{{ language.skill_level }}</span>
+                  </div>
                 </div>
-              </div>
-              <div class="cv-language-item">
-                <span class="cv-language">Danish</span>
-                <div class="cv-language-level">
-                  <span class="cv-language-proficiency">Intermediate</span>
-                </div>
-              </div>
-              <div class="cv-language-item">
-                <span class="cv-language">Russian</span>
-                <div class="cv-language-level">
-                  <span class="cv-language-proficiency">Native</span>
-                </div>
-              </div>
+              }
             </div>
           </div>
         </div>

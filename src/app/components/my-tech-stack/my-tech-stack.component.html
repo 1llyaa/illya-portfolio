@@ -1,36 +1,17 @@
 <section id="my-tech-stack" class="my-tech-stack">
   <div class="container">
-    <h2>Mé technologie</h2>
+    <h2>Technologies I use</h2>
     <p>
-      Jsem fullstack vývojář se zaměřením na backend a e-commerce řešení. Ve volném čase se věnuji vývoji e-shopů
-      a optimalizaci jejich výkonu. Mám zkušenosti s kompletním vývojem webových aplikací od databáze až po frontend.
+      I'm a full-stack developer focused on backend and e-commerce solutions. In my free time, I work on developing online stores and improving their performance. I have experience with the full development of web applications, from the database to the frontend.
     </p>
 
     <div class="skills">
-      <div class="skill-card" data-tooltip="Vývoj moderních webových aplikací s Angular. Zkušenosti s TypeScript, RxJS a Angular Material.">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angular/angular-original.svg" alt="Angular" />
-        <span>Angular</span>
-      </div>
-      <div class="skill-card" data-tooltip="Vývoj backend aplikací, automatizace a API. Zkušenosti s FastAPI, Django a Flask.">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" />
-        <span>Python</span>
-      </div>
-      <div class="skill-card" data-tooltip="Vývoj rychlých a škálovatelných REST API. Zkušenosti s asynchronním programováním a OpenAPI.">
-        <img src="https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png" alt="FastAPI" />
-        <span>FastAPI</span>
-      </div>
-      <div class="skill-card" data-tooltip="Vývoj e-shopů a webových stránek. Zkušenosti s WooCommerce a vlastními pluginy.">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg" alt="WordPress" />
-        <span>WordPress</span>
-      </div>
-      <div class="skill-card" data-tooltip="Vývoj e-commerce řešení. Zkušenosti s vlastními aplikacemi a integracemi.">
-        <img src="https://cdn.worldvectorlogo.com/logos/shopify.svg" alt="Shopify" />
-        <span>Shopify</span>
-      </div>
-      <div class="skill-card" data-tooltip="Práce s NoSQL databázemi. Zkušenosti s modelováním dat a optimalizací dotazů.">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" />
-        <span>MongoDB</span>
-      </div>
+        @for (skill of skills; track $index) {
+            <div class="skill-card" [attr.data-tooltip]="skill.tooltip">
+                <img [src]="skill.img" [alt]="skill.alt" />
+                <span>{{ skill.label }}</span>
+            </div>
+        }
     </div>
   </div>
-</section> 
+</section>

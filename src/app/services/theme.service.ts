@@ -13,11 +13,11 @@ export class ThemeService {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
       this.setTheme(savedTheme === 'dark');
-    } else {
+    } /*else {
       // Check system preference
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       this.setTheme(prefersDark);
-    }
+    }*/
   }
 
   setTheme(isDark: boolean) {
@@ -56,4 +56,4 @@ export class ThemeService {
     root.style.setProperty('--accent-secondary', '#887456');
     root.style.setProperty('--accent-light', '#ffedcb');
   }
-} 
+}
