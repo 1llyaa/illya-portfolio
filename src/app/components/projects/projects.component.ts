@@ -24,7 +24,7 @@ export class ProjectsComponent {
         },
         {
             title: 'Wordpress website',
-            description: 'Website for local project',
+            description: 'Website of architecture project in South Bohemia',
             image: '../../../assets/images/domko-domy.png',
             link: 'https://domkodomy.cz/',
         },
